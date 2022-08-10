@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		int n = sc.nextInt();
+		sc.nextLine();
+		
+		for(int i = 0; i < n; i++) {
+			String p = sc.nextLine();
+			
+			String[] com = p.split(" ");
+			
+			if(!map.containsKey(com[0])) {
+				map.put(com[0], com[1]);
+			}
+			else {
+				map.replace(com[0], com[1]);
+			}
+		}
+		
+		Set<String> keySet = map.keySet();
+		List<String> arrlist = new ArrayList<>();
+		for (String key : keySet) {	
+			if(map.get(key).equals("leave")) {
+				continue;
+			}
+			arrlist.add(key);
+		}	
+		
+		Collections.sort(arrlist, Collections.reverseOrder());
+		
+		for(String name : arrlist) {
+			System.out.println(name);
+		}
+		
+		sc.close();
+	}
+}
