@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String N = sc.nextLine();
+
+		int[] count = new int[10];
+		int nineSix = 0;
+		
+		for(int i = 0; i < N.length(); i++) {
+			char m = N.charAt(i);
+			
+			if((m != '9') && (m != '6')) {
+				count[m - '0']++;
+			}
+			else if((m == '9') || (m == '6')) {
+				nineSix += 1;
+			}
+		}
+		
+		int max = 0;
+		for(int j = 0; j < count.length; j++) {
+			if(max < count[j]) {
+				max = count[j];
+			}
+		}
+		
+		if((nineSix % 2) == 0) {
+			nineSix = nineSix / 2;
+		}
+		else {
+			nineSix = nineSix / 2 + 1;
+		}
+
+		System.out.println(Math.max(max, nineSix));
+		
+		sc.close();
+	}
+}
